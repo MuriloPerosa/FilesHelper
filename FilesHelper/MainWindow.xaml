@@ -1,0 +1,44 @@
+﻿<Window x:Class="FilesHelper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FilesHelper"
+        mc:Ignorable="d"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        ContentRendered="Window_ContentRendered"
+        Title="Files Helper" Height="150" Width="400">
+    <xctk:BusyIndicator IsBusy="{Binding IsBusy, UpdateSourceTrigger=PropertyChanged}" BusyContent="{Binding BusyContent, UpdateSourceTrigger=PropertyChanged}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+
+            <Menu Grid.Row="0">
+                <MenuItem Header="_Ferramentas">
+                    <MenuItem Header="_Configurar Backup" x:Name="mn_Backup" Click="mn_Backup_Click"/>
+                    <MenuItem Header="_Configurar Limpeza" x:Name="mn_Limpeza" Click="mn_Limpeza_Click"/>
+                    <Separator />
+                    <MenuItem Header="_Sair" x:Name="mn_Sair" Click="mn_Sair_Click"/>
+                </MenuItem>
+            </Menu>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Margin="5" Content="BACKUP" x:Name="btn_Bkp" Click="btn_Bkp_Click"/>
+                <Button Grid.Column="1" Margin="5" Content="LIMPAR" x:Name="btn_Limpar" Click="btn_Limpar_Click"/>
+            </Grid>
+            
+            <TextBlock Grid.Row="2" x:Name="tb_Product" FontSize="10" FontWeight="SemiBold" Margin="5,5,0,0" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="2" x:Name="tb_Version" FontSize="10" FontWeight="SemiBold" Margin="5,5,5,0" HorizontalAlignment="Right"/>
+        </Grid>
+    </xctk:BusyIndicator>
+</Window>
